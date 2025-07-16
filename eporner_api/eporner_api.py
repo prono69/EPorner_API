@@ -124,6 +124,10 @@ class Video:
     def title(self) -> str:
         title = self.json_data["title"]
         return title
+        
+    @cached_property
+    def link(self) -> str:
+        return self.url
 
     @cached_property
     def views(self) -> str:
