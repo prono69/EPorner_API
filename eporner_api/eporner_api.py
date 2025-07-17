@@ -330,11 +330,14 @@ JSONDecodeError: I need your help to fix this error. Please report the URL you'v
 
         elif quality == "worst":
             quality, url = reversed_links[-1]
+            
+        elif quality in dict(available_links):
+            url = dict(available_links)[quality]
 
         else:
             raise "No URLs available? Please report that"
 
-        self.logger.error(f"Using direct donwload Link: {str(url)}")
+        self.logger.info(f"Using direct donwload Link: {str(url)}")
         return urljoin("https://eporner.com", str(url))
 
     def download(self, quality, path, callback=None, mode=Encoding.mp4_h264, no_title=False):
